@@ -1,11 +1,21 @@
 #!/bin/bash
 clear
-cd ..
 installdir=$(pwd)
+
+#------REPOS------#
+git clone https://github.com/boprr/st
+git clone https://github.com/boprr/slstatus
+git clone https://github.com/boprr/dwm
+git clone https://github.com/boprr/dmenu
+#------REPOS------#
+
+#------INIT------#
+touch ~/.xinitrc
+cp -f conf/.xinitrc ~/.xinitrc
+#------INIT------#
 
 #------DEPENDS------#
 yes | sudo pacman -S base-devel libx11 libxft libxinerama freetype2 fontconfig
-
 mkdir -p ~/.local/share/fonts 
 cd ~/.local/share/fonts
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -O MesloLGS_NF_Regular.ttf
@@ -16,24 +26,29 @@ cd $installdir
 fc-cache -f -v
 #------DEPENDS------#
 
+#------XORG------#
+sudo cp -r conf/xorg-global/* /etc/X11/xorg.conf.d/
+sudo cp -r conf/xorg-local/* /usr/share/X11/xorg.conf.d/
+#------XORG------#
+
 #------SUCKLESS------#
-# install dmenu
 cd dmenu
 sudo make install
 cd .. 
 
-# install dwm
 cd dwm
 sudo make install
 cd .. 
 
-# install slstatus
 cd slstatus
 sudo make install
 cd .. 
 
-# install st
 cd st
 sudo make install
 cd .. 
 #------SUCKLESS------#
+
+#------SETUP------#
+systemctl --user enable redshift.service 
+#------SETUP------#
