@@ -29,7 +29,6 @@ fc-cache -f -v
 
 #------XORG------#
 sudo cp -r conf/xorg-global/* /etc/X11/xorg.conf.d/
-sudo cp -r conf/xorg-local/* /usr/share/X11/xorg.conf.d/
 #------XORG------#
 
 #------SUCKLESS------#
