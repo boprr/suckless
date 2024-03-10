@@ -12,6 +12,7 @@ git clone https://github.com/boprr/dmenu
 #------INIT------#
 touch ~/.xinitrc
 cp -f conf/.xinitrc ~/.xinitrc
+cp -f conf/.zprofile ~/.zprofile
 #------INIT------#
 
 #------DEPENDS------#
