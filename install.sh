@@ -51,4 +51,5 @@ cd ..
 
 #------SETUP------#
 systemctl --user enable redshift.service 
+systemctl --user start redshift.service 
 #------SETUP------#
